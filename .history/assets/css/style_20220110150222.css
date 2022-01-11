@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#slug,
+#specialist,
+#fullName,
+#workPlace,
+#address,
+#keywords{
+    text-transform: capitalize;
+}
+p{
+    margin-bottom: 0!important;
+}
+.status{
+    color: var(--color);
+    font-weight: bold !important;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.363);
+}
