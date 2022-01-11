@@ -1,4 +1,4 @@
-<?php header( 'Location: /index.php' ) ; ?>
+<?php header( 'Location: /index.html' ) ; ?>
 <?php
     $page = $_GET['page'] ?? '';
     $menuitems = [
