@@ -4,7 +4,9 @@
         'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục elasticsearch',
         'document' => '<i class="bx bx-file"></i> Quản lý tài liệu healthcare_new',
         'search' => '<i class="bx bx-file-find"></i> Tìm kiếm tài liệu healthcare_new',
-        'delete' => '<i class="bx bx-folder-minus"></i> Xóa bác sĩ theo ID tài liệu healthcare_new'
+        'delete' => '<i class="bx bx-folder-minus"></i> Xóa bác sĩ theo ID tài liệu healthcare_new',
+        'documenthealthcare' => '<i class="bx bx-file"></i> Quản lý tài liệu healthcare',
+        'documentdanhbayte' => '<i class="bx bx-file"></i> Quản lý tài liệu danhba_yte',
     ];
     use Elasticsearch\ClientBuilder;
     require "vendor/autoload.php";
@@ -16,6 +18,8 @@
         ]
     ];
     $client = ClientBuilder::create()->setHosts($hosts)->build();
+    // kiểm tra tất cả index có tồn tại hay không
+    // $exists = $client->indices()->exists(['index' => 'healthcare_new']);
     $result = $client->cat()->indices();
 ?>
 

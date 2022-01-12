@@ -11,11 +11,13 @@
     $hosts = [
         [
             'host' => 'localhost',
-            'port' => 9299,
+            'port' => 9299 || 9200,
             'scheme' => 'http',
         ]
     ];
     $client = ClientBuilder::create()->setHosts($hosts)->build();
+    // kiểm tra tất cả index có tồn tại hay không
+    $exists = $client->indices()->exists(['index' => 'healthcare_new']);
     $result = $client->cat()->indices();
 ?>
 

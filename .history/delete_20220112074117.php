@@ -4,8 +4,7 @@
     $hosts = [
         [
             'host' => 'localhost',
-            //mutiple port
-            'port' => 9299,
+            'port' => 9299 ? 9299 : 9200,
             'scheme' => 'http',
         ]
     ];

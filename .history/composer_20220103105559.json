@@ -1,8 +1,5 @@
 {
     "require": {
         "elasticsearch/elasticsearch": "^7.16"
-    },
-    "config": {
-        "platform-check": false
     }
 }
