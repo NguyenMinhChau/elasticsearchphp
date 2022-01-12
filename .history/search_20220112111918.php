@@ -79,7 +79,7 @@
                     echo '<td>'.number_format($item['_score'],3,'.','').'</td>';
                     echo '<td>'.$item['_id'].'</td>';
                     echo '<td>'.$item['_source']['id'].'</td>';
-                    echo '<td>'.$item['_source']['name'].'</td>';
+                    echo '<td>'.$item['highlight']['name'][0] ?? $item['_source']['name'].'</td>';
                     echo '<td>'.$item['highlight']['keyWords'][0] ?? $item['_source']['keyWords'].'</td>';
                     echo '<td>'.$item['_source']['specialist'].'</td>';
                     echo '<td>'.$item['_source']['slug'].'</td>';
