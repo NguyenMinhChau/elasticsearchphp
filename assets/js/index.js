@@ -1,10 +1,10 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+var today = new Date();
+var year = today.getFullYear();
 function datetime(){
-    var today = new Date();
     var day = today.getDate();
     var month = today.getMonth() + 1;
-    var year = today.getFullYear();
     if (day < 10) {
         day = '0' + day;
     }
@@ -13,10 +13,25 @@ function datetime(){
     }
     var result = day + '/' + month + '/' + year;
     $('.datetime').innerText = result;
+    setInterval(function(){
+        var today = new Date();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+        if (hour < 10) {
+            hour = '0' + hour;
+        }
+        if (minute < 10) {
+            minute = '0' + minute;
+        }
+        if (second < 10) {
+            second = '0' + second;
+        }
+        var timer = hour + ':' + minute + ':' + second;
+        $('.timer').innerText = timer;
+    },1000)
 }
 datetime();
-var day = new Date();
-var year = day.getFullYear();
 $$(".year").forEach(function(element) {
     element.innerHTML = year;
 })

@@ -14,12 +14,22 @@
 p{
     margin-bottom: 0!important;
 }
+.d-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
 .status{
     color: var(--color);
     font-weight: bold !important;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.363);
 }
-.datetime{
+.datetime,
+.timer{
     color: rgba(255,255,255,.5)!important;
     display: block!important;
     padding: 0.5rem 1rem!important;
