@@ -52,7 +52,7 @@
                             <a class="nav-link" href="/?page=<?= $key ?>"><?= $label ?></a>
                         </li>
                     <?php endforeach ?>
-                    <li class="nav-item d-flex">
+                    <li class="nav-item d-flex-nav">
                         <span class='datetime'></span>
                         <span class='timer'></span>
                     </li>
