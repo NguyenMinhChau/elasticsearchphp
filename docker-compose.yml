@@ -1,8 +1,8 @@
 version: "3.3"
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
-    container_name: elasticsearchdev
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    container_name: elasticsearch
     restart: always
     environment:
       - xpack.security.enabled=false 
@@ -23,8 +23,8 @@ services:
     expose:
       - 9299
   kibana:
-    container_name: kibanadev
-    image: docker.elastic.co/kibana/kibana:7.16.2
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.3.1
     restart: always
     #environment:    
     #  - SEVER_HOST=0.0.0.0
