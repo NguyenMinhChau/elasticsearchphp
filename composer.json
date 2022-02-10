@@ -1,6 +1,14 @@
 {
     "require": {
-        "elasticsearch/elasticsearch": "^7.16"
+        "elasticsearch/elasticsearch": "^7.16",
+        "silex/silex": "^2.0.4",
+        "monolog/monolog": "^1.22",
+        "twig/twig": "^2.0",
+        "symfony/twig-bridge": "^3",
+        "alrik11es/cowsayphp": "^1.2"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
     },
     "config": {
         "platform-check": false
