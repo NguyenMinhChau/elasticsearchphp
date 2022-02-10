@@ -1,5 +1,5 @@
 <?php
-    require_once './';
+    require_once './index.php';
     $page = $_GET['page'] ?? '';
     $menuitems = [
         'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục elasticsearch',
