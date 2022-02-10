@@ -1,5 +1,5 @@
 <?php
-    require_once './index.php';
+    require_once './';
     $page = $_GET['page'] ?? '';
     $menuitems = [
         'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục elasticsearch',
@@ -51,10 +51,10 @@
             ]
         ];
     }
-    // if($status9299 != 200 && $status9200 != 200){
-    //     echo '<h3>Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
-    //     exit();
-    // }
+    if($status9299 != 200 && $status9200 != 200){
+        echo '<h3>Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
+        exit();
+    }
     $client = ClientBuilder::create()->setHosts($hosts)->build();
     $result = $client->cat()->indices();
 ?>
