@@ -42,7 +42,7 @@
             ]
         ];
     }
-    if($status9299 == 500 && $status9200 == 500){
+    if($status9299 == 200 && $status9200 == 200){
         $hosts = [
             [
                 'host' => 'localhost',
