@@ -74,7 +74,7 @@
 <body>
     <div id='app'>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/"><i class='bx bx-bolt-circle'></i> ElasticSearch</a>
+            <a class="navbar-brand" href="./"><i class='bx bx-bolt-circle'></i> ElasticSearch</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,7 +88,7 @@
                             }
                         ?>
                         <li class="nav-item <?= $class ?>">
-                            <a class="nav-link" href="/?page=<?= $key ?>"><?= $label ?></a>
+                            <a class="nav-link" href="./?page=<?= $key ?>"><?= $label ?></a>
                         </li>
                     <?php endforeach ?>
                     <li class="nav-item d-flex-nav">

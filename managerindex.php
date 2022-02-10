@@ -153,7 +153,7 @@
                         </td>';
                         echo '<td>';
                         if($listIndexsExits[$key]){
-                            echo '<a href="http://localhost:8800/?page=managerindex&action=delete'.$listsSlug[$key].'" class="btn btn-outline-danger"><i class="bx bx-folder-minus"></i> Xóa chỉ mục</a>';
+                            echo '<a href="./?page=managerindex&action=delete'.$listsSlug[$key].'" class="btn btn-outline-danger"><i class="bx bx-folder-minus"></i> Xóa chỉ mục</a>';
                         }
                         echo '</td>';
                         echo '</tr>';
