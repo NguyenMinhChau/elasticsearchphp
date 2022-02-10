@@ -55,7 +55,8 @@
         echo '<h3>Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
         exit();
     }
-    $client = ClientBuilder::create()->setHosts($hosts)->build();
+    // $client = ClientBuilder::create()->setHosts($hosts)->build();
+    $client = ClientBuilder::create()->build();
     $result = $client->cat()->indices();
 ?>
 
