@@ -1,5 +1,6 @@
 {
     "require": {
-        "elasticsearch/elasticsearch": "^7.16"
+        "elasticsearch/elasticsearch": "^7.16",
+        "php": "8.1.2"
     }
 }
