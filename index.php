@@ -24,7 +24,7 @@
     $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
     curl_close($curl9299);
     curl_close($curl9200);
-    if($status9299 != 200){
+    if($status9299 == 200){
         $hosts = [
             [
                 'host' => 'localhost',
@@ -33,7 +33,7 @@
             ]
         ];
     }
-    if($status9200 != 200){
+    if($status9200 == 200){
         $hosts = [
             [
                 'host' => 'localhost',
@@ -42,7 +42,7 @@
             ]
         ];
     }
-    if($status9299 == 200 && $status9200 == 200){
+    if($status9299 != 200 && $status9200 != 200){
         $hosts = [
             [
                 'host' => 'localhost',
@@ -51,7 +51,7 @@
             ]
         ];
     }
-    if($status9299 != 200 && $status9200 != 200){
+    if($status9299 == 200 && $status9200 == 200){
         echo '<h3>Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
         exit();
     }
