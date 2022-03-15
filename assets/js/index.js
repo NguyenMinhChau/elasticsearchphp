@@ -49,7 +49,10 @@ btnRandom.addEventListener('click', () => {
     $('#id').value = `${result1}-${result2}-${result3}`;
     $('#idDoctor').value = `${result1}-${result2}-${result3}`;
 })
-
+$('#id').addEventListener('keyup', () => {
+    var idDoctor = $('#id').value.trim();
+    $('#idDoctor').value = idDoctor;
+})
 
 //Loại bỏ dấu Tiếng Việt
 function removeAccents(str) {
@@ -83,3 +86,11 @@ $('#toggleSlug').addEventListener('change', () => {
         $('#slug').readOnly = true;
     }
 })
+$('#toggleIdDocument').addEventListener('change', () => {
+    if ($('#toggleIdDocument').checked) {
+        $('#id').readOnly = false;
+    } else {
+        $('#id').readOnly = true;
+    }
+})
+

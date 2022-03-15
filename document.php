@@ -67,11 +67,16 @@
     $keywords = $_POST['keywords'] ?? null;
     $slug = $_POST['slug'] ?? null;
     $toggleSlug = $_POST['toggleSlug'] ?? null;
-    $readonly = false;
-    //kiểm tra input id=slug có readonly hay không
+    $readonlySlug = false;
+    $readonlyId = false;
+    //kiểm tra input id=slug có readonlySlug hay không
     if($toggleSlug){
-        $readonly = true;
+        $readonlySlug = true;
     }
+    if($id){
+        $readonlyId = true;
+    }
+    
     $mgs = ''; $mgsGet= '';
     if($id != null && $idDoctor != null && $fullName != null && $phoneNumber != null && $workPlace != null && $specialist != null && $address != null && $slug != null && $keywords != null){
         //Cập nhật/Tạo mới document
@@ -87,7 +92,7 @@
                 'specialist' => trim(ucfirst($specialist)),
                 'address' => trim(ucfirst($address)),
                 'keyWords' => trim(ucfirst($keywords)),
-                'slug' => $readonly ? ucfirst($slug) : ucfirst($slug) . '_' . $idDoctor,
+                'slug' => $readonlySlug ? ucfirst($slug) : ucfirst($slug) . '_' . $idDoctor,
             ]
         ];
         $client->index($params);
@@ -177,11 +182,14 @@
         <form method='POST' autocomplete="off" id='form-2' name='form-2'>
             <div class="form-group">
                 <label for="id">ID Tài liệu</label>
-                <input type="text" class="form-control" id="id" name='id' value='<?=$id?>' placeholder="Fullfluid..." readonly>
+                <input type="text" class="form-control" id="id" name='id' value='<?=$id?>' placeholder="Fullfilled..." readonly>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="toggleIdDocument" name="toggleIdDocument"/> Tạo ID theo ý muốn
             </div>
             <div class="form-group">
                 <label for="idDoctor">Mã bác sĩ</label>
-                <input type="text" class="form-control" id="idDoctor" name='idDoctor' value='<?=$idDoctor?>' placeholder="Fullfluid..." readonly>
+                <input type="text" class="form-control" id="idDoctor" name='idDoctor' value='<?=$idDoctor?>' placeholder="Fullfilled..." readonly>
             </div>
             <div class="form-group">
                 <label for="fullName">Họ và tên Bác sĩ</label>
@@ -211,7 +219,7 @@
                 <label for="slug">
                     Slug 
                 </label>
-                <input type="text" class="form-control" id="slug" name='slug' value="<?=$slug?>"  placeholder="Fullfluid..." readonly>
+                <input type="text" class="form-control" id="slug" name='slug' value="<?=$slug?>"  placeholder="Fullfilled..." readonly>
             </div>
             <div class="form-group">
                 <input type="checkbox" id="toggleSlug" name="toggleSlug"/> Chỉnh sửa slug theo ý muốn (Mặc định: Ho_Va_Ten_ID)
