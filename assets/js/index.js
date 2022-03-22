@@ -53,6 +53,7 @@ $('#id').addEventListener('keyup', () => {
     var idDoctor = $('#id').value.trim();
     $('#idDoctor').value = idDoctor;
 })
+$('#idDoctor').value = $('#id').value.trim();
 
 //Loại bỏ dấu Tiếng Việt
 function removeAccents(str) {

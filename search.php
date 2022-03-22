@@ -115,15 +115,27 @@
                 echo '</thead>';
                 echo '<tbody>';
                 foreach($result['hits']['hits'] as $item){
+                    $resultID;
+                    if($item['_source']['id'] == 0 && $item['_source']['docId']){
+                        $resultID = $item['_source']['docId'];
+                    }else{
+                        $resultID = $item['_source']['id'];
+                    }
+                    $resultPlace;
+                    if($item['_source']['workPlace'] == 0 && $item['_source']['officeAddress']){
+                        $resultPlace = $item['_source']['officeAddress'];
+                    }else{
+                        $resultPlace = $item['_source']['workPlace'];
+                    }
                     echo '<tr>';
                     echo '<td>'.number_format($item['_score'],3,'.','').'</td>';
                     echo '<td>'.$item['_id'].'</td>';
-                    echo '<td>'.$item['_source']['id'].'</td>';
+                    echo '<td>'.$resultID.'</td>';
                     echo '<td>'.$item['_source']['name'].'</td>';
                     echo '<td>'.$item['highlight']['keyWords'][0] ?? $item['_source']['keyWords'].'</td>';
                     echo '<td>'.$item['_source']['specialist'].'</td>';
                     echo '<td>'.$item['_source']['slug'].'</td>';
-                    echo '<td>'.$item['_source']['workPlace'].'</td>';
+                    echo '<td>'.$resultPlace.'</td>';
                     echo '<td>'.$item['_source']['address'].'</td>';
                     echo '</tr>';
                 }

@@ -36,3 +36,7 @@ services:
       - elasticsearch
 volumes:
   els-data:
+
+# CLI
+#1 docker build -t docker.elastic.co/elasticsearch/elasticsearch:7.3.1 . //trùng với image của elasticsearch trong docker, nhớ có dấu chấm phía sau
+#2 docker-compose up

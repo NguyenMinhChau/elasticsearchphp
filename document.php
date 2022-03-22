@@ -116,23 +116,23 @@
         $listId[] = $hit;
     }
     //lấy tài liệu theo $idUpdate
-    if($idUpdate != null || $idUpdateSelect != null){
+    if($idUpdate != null){
         $params = [
             'index' => 'healthcare_new',
             'type' => '_doc',
-            'id' => $idUpdate != null ? $idUpdate : $idUpdateSelect,
+            'id' => $idUpdate,
         ];
         $document = $client->get($params);
         $id = $document['_source']['id'];
         $idDoctor = $document['_source']['id'];
         $fullName = $document['_source']['name'];
         $phoneNumber = $document['_source']['phoneNumber'];
-        $workPlace = $document['_source']['workPlace'];
+        $workPlace = $document['_source']['officeAddress'] ? $document['_source']['officeAddress'] : $document['_source']['workPlace'];
         $specialist = $document['_source']['specialist'];
         $address = $document['_source']['address'];
         $keywords = $document['_source']['keyWords'];
         $slug = $document['_source']['slug'];
-        $mgsGet = 'Lấy dữ liệu thành công cho document có id = '.$id;
+        $mgsGet = 'Lấy dữ liệu thành công cho document có id = '.$idUpdate;
     }
 ?>
 <div class='card m-4'>
@@ -143,20 +143,9 @@
     <div class='card-body'>
         <form method='POST' autocomplete='off' id='form-1' name='form-1'>
             <div class="row">
-            <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
-                    <label for="idUpdateSelect">ID Tài liệu cập nhật [0-10000 documents]</label>
-                    <select class="form-control" id="idUpdateSelect" name='idUpdateSelect' value='<?=$idUpdate?>'>
-                        <option value=''>-- Chọn ID Document --</option>
-                        <?php foreach($listId as $idlist):?>
-                            <option value='<?=$idlist['_id']?>'><?=$idlist['_id'] . ' - ' . $idlist['_source']['name'] . ' - ' . $idlist['_source']['specialist']?></option>
-                        <?php endforeach;?>
-                    </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                    <label for="idUpdate">ID Tài liệu cập nhật</label>
+                    <label for="idUpdate">ID Tài liệu cập nhật || DoctorID</label>
                     <input type="text" class="form-control" id="idUpdate" name='idUpdate' value='<?=$idUpdate?>' placeholder='Enter...'/>
                     </div>
                 </div>
@@ -182,7 +171,7 @@
         <form method='POST' autocomplete="off" id='form-2' name='form-2'>
             <div class="form-group">
                 <label for="id">ID Tài liệu</label>
-                <input type="text" class="form-control" id="id" name='id' value='<?=$id?>' placeholder="Fullfilled..." readonly>
+                <input type="text" class="form-control" id="id" name='id' value='<?=$idUpdate?>' placeholder="Fullfilled..." readonly>
             </div>
             <div class="form-group">
                 <input type="checkbox" id="toggleIdDocument" name="toggleIdDocument"/> Tạo ID theo ý muốn
