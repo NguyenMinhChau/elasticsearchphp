@@ -2,10 +2,10 @@
     // require_once './index.php';
     $page = $_GET['page'] ?? '';
     $menuitems = [
-        'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục elasticsearch',
-        'document' => '<i class="bx bx-file"></i> Quản lý tài liệu healthcare_new',
-        'search' => '<i class="bx bx-file-find"></i> Tìm kiếm tài liệu healthcare_new',
-        'delete' => '<i class="bx bx-folder-minus"></i> Xóa bác sĩ theo ID tài liệu healthcare_new'
+        'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục',
+        'document' => '<i class="bx bx-file"></i> Quản lý tài liệu',
+        'search' => '<i class="bx bx-file-find"></i> Tìm kiếm tài liệu',
+        'delete' => '<i class="bx bx-folder-minus"></i> Xóa tài liệu theo ID'
     ];
     use Elasticsearch\ClientBuilder; 
     require "vendor/autoload.php";
@@ -92,7 +92,7 @@
                             <a class="nav-link" href="./?page=<?= $key ?>"><?= $label ?></a>
                         </li>
                     <?php endforeach ?>
-                    <li class="nav-item d-flex-nav">
+                    <li class="nav-item d-flex">
                         <span class='datetime'></span>
                         <span class='timer'></span>
                     </li>
