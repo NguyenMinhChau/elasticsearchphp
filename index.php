@@ -17,7 +17,9 @@ $curl9200 = curl_init($url9200);
 curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, true);
 $response9200 = curl_exec($curl9200);
 $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
-curl_close($curl9200);
+// curl_close($curl9200);
+
+var_dump($status9200);
 
 if ($status9200 == 200) {
     $hosts = [
