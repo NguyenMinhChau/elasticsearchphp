@@ -20,13 +20,14 @@ require "vendor/autoload.php";
 // curl_close($curl9200);
 
 //Kiểm tra request có trả về thành công hay không
-$url9200 = curl_init();
-curl_setopt($url9200, CURLOPT_URL, 'http://localhost:9200');
-curl_setopt($url9200, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($url9200, CURLOPT_CUSTOMREQUEST, 'GET');
-$response9200 = curl_exec($url9200);
-$status9200 = curl_getinfo($url9200, CURLINFO_HTTP_CODE);
-curl_close($url9200);
+$url9200 = 'http://localhost:9200';
+$curl9200 = curl_init($url9200);
+curl_setopt($curl9200, CURLOPT_URL, $url9200);
+curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl9200, CURLOPT_CUSTOMREQUEST, 'GET');
+$response9200 = curl_exec($curl9200);
+$status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
+curl_close($curl9200);
 
 if ($status9200 == 200) {
     $hosts = [
