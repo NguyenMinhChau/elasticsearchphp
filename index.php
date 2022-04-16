@@ -1,6 +1,5 @@
 <?php
 // require_once './index.php';
-define('ENVIRONMENT', 'development');
 $page = $_GET['page'] ?? '';
 $menuitems = [
     'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục',
@@ -13,14 +12,21 @@ use Elasticsearch\ClientBuilder;
 
 require "vendor/autoload.php";
 
-$url9200 = 'http://localhost:9200';
-$curl9200 = curl_init($url9200);
-curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, true);
-$response9200 = curl_exec($curl9200);
-$status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
-curl_close($curl9200);
+// $url9200 = 'http://localhost:9200';
+// $curl9200 = curl_init($url9200);
+// curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, true);
+// $response9200 = curl_exec($curl9200);
+// $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
+// curl_close($curl9200);
 
-var_dump('status9200: ' . $status9200);
+//Kiểm tra request có trả về thành công hay không
+$url9200 = curl_init();
+curl_setopt($url9200, CURLOPT_URL, 'http://localhost:9200');
+curl_setopt($url9200, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($url9200, CURLOPT_CUSTOMREQUEST, 'GET');
+$response9200 = curl_exec($url9200);
+$status9200 = curl_getinfo($url9200, CURLINFO_HTTP_CODE);
+curl_close($url9200);
 
 if ($status9200 == 200) {
     $hosts = [
@@ -32,12 +38,13 @@ if ($status9200 == 200) {
     ];
 }
 if ($status9200 != 200) {
-    echo '
-        <h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
+    echo '<h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
     exit();
 }
 $client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
+
+var_dump('status9200: ' . $status9200);
 
 ?>
 
