@@ -12,24 +12,16 @@ use Elasticsearch\ClientBuilder;
 
 require "vendor/autoload.php";
 
-//kiểm tra trạng thái URL bằng curl https
-$url9299 = 'http://localhost:9299';
 $url9200 = 'http://localhost:9200';
-$curl9299 = curl_init($url9299);
 $curl9200 = curl_init($url9200);
-curl_setopt($curl9299, CURLOPT_RETURNTRANSFER, true);
-// curl_setopt($curl9299, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, true);
-// curl_setopt($curl9200, CURLOPT_SSL_VERIFYPEER, false);
-$response9299 = curl_exec($curl9299);
 $response9200 = curl_exec($curl9200);
-$status9299 = curl_getinfo($curl9299, CURLINFO_HTTP_CODE);
 $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
+curl_close($curl9200);
 
-var_dump('status9299: ' . $status9299);
 var_dump('status9200: ' . $status9200);
 
-if ($status9299 != 200) {
+if ($status9200 == 200) {
     $hosts = [
         [
             'host' => 'localhost',
@@ -39,36 +31,13 @@ if ($status9299 != 200) {
     ];
 }
 if ($status9200 != 200) {
-    $hosts = [
-        [
-            'host' => 'localhost',
-            'port' => 9299,
-            'scheme' => 'http',
-        ]
-    ];
-}
-if ($status9299 == 200 && $status9200 == 200) {
-    $hosts = [
-        [
-            'host' => 'localhost',
-            'port' => 9200,
-            'scheme' => 'http',
-        ]
-    ];
-}
-if ($status9299 != 200 && $status9200 != 200) {
-    echo '<h3>Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
+    echo '
+        <h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
     exit();
 }
 $client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
 
-if ($status9200 === 0) {
-    var_dump('client: ' . $result);
-}
-
-curl_close($curl9299);
-curl_close($curl9200);
 ?>
 
 
@@ -118,7 +87,7 @@ curl_close($curl9200);
             include $page . '.php';
             ?>
         <?php else : ?>
-            <h3 class="mt-2 text-center">ElasticSearch dùng để truy vấn danh bạ y tế 2022 : Port <?= $hosts[0]['port'] ?></h3>
+            <h3 class="mt-2 text-center">ElasticSearch dùng để truy vấn danh bạ y tế 2022</h3>
             <?php
             if ($result) {
                 echo '<div class="container-fluid">';
