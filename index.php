@@ -12,7 +12,7 @@ use Elasticsearch\ClientBuilder;
 
 require "vendor/autoload.php";
 //kiểm tra trạng thái URL bằng curl https
-$url9299 = 'https://dashboard.heroku.com/apps/elasticsearch2022';
+$url9299 = 'http://localhost:9299';
 $url9200 = 'http://localhost:9200';
 $curl9299 = curl_init($url9299);
 $curl9200 = curl_init($url9200);
