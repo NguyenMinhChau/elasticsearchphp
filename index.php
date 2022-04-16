@@ -24,6 +24,9 @@ $response9299 = curl_exec($curl9299);
 $response9200 = curl_exec($curl9200);
 $status9299 = curl_getinfo($curl9299, CURLINFO_HTTP_CODE);
 $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
+
+var_dump('status9299: ' . $status9299);
+var_dump('status9200: ' . $status9200);
 curl_close($curl9299);
 curl_close($curl9200);
 if ($status9299 != 200) {
