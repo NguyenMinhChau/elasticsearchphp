@@ -12,6 +12,7 @@ use Elasticsearch\ClientBuilder;
 
 require "vendor/autoload.php";
 
+
 $url9200 = 'http://localhost:9200';
 $curl9200 = curl_init($url9200);
 curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, true);
@@ -36,6 +37,12 @@ if ($status9200 != 200) {
 }
 $client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
+//kiểm tra elasticsearch có tồn tại hay không
+if ($result['status'] != 200) {
+    echo '<h3 style="background-color: #d4edda; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #155724;">Elasticsearch đã được kích hoạt</h3>';
+} else {
+    echo '<h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Elasticsearch chưa được kích hoạt</h3>';
+}
 
 ?>
 
