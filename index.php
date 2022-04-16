@@ -41,13 +41,8 @@ $hosts = [
         'scheme' => 'http',
     ]
 ];
-if ($status9200 != 200) {
-    echo '<h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
-    exit();
-} else {
-    $client = ClientBuilder::create()->setHosts($hosts)->build();
-    $result = $client->cat()->indices();
-}
+$client = ClientBuilder::create()->setHosts($hosts)->build();
+$result = $client->cat()->indices();
 
 ?>
 
