@@ -11,15 +11,16 @@ $menuitems = [
 use Elasticsearch\ClientBuilder;
 
 require "vendor/autoload.php";
+
 //kiểm tra trạng thái URL bằng curl https
 $url9299 = 'http://localhost:9299';
 $url9200 = 'http://localhost:9200';
 $curl9299 = curl_init($url9299);
 $curl9200 = curl_init($url9200);
 curl_setopt($curl9299, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl9299, CURLOPT_SSL_VERIFYPEER, false);
+// curl_setopt($curl9299, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($curl9200, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl9200, CURLOPT_SSL_VERIFYPEER, false);
+// curl_setopt($curl9200, CURLOPT_SSL_VERIFYPEER, false);
 $response9299 = curl_exec($curl9299);
 $response9200 = curl_exec($curl9200);
 $status9299 = curl_getinfo($curl9299, CURLINFO_HTTP_CODE);
@@ -27,8 +28,7 @@ $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
 
 var_dump('status9299: ' . $status9299);
 var_dump('status9200: ' . $status9200);
-curl_close($curl9299);
-curl_close($curl9200);
+
 if ($status9299 != 200) {
     $hosts = [
         [
@@ -62,6 +62,8 @@ if ($status9299 != 200 && $status9200 != 200) {
 }
 $client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
+curl_close($curl9299);
+curl_close($curl9200);
 ?>
 
 
