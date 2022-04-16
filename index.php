@@ -36,8 +36,6 @@ if ($status9200 != 200) {
 }
 $client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
-echo '<br/>';
-var_dump($result);
 ?>
 
 
