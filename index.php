@@ -8,9 +8,10 @@ $menuitems = [
     'delete' => '<i class="bx bx-folder-minus"></i> Xóa tài liệu theo ID'
 ];
 
-use Elasticsearch\ClientBuilder;
 
 require "vendor/autoload.php";
+
+use Elasticsearch\ClientBuilder;
 
 $url9200 = 'http://localhost:9200';
 $curl9200 = curl_init($url9200);
