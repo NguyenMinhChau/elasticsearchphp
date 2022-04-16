@@ -1,5 +1,6 @@
 <?php
 // require_once './index.php';
+define('ENVIRONMENT', 'development');
 $page = $_GET['page'] ?? '';
 $menuitems = [
     'managerindex' => '<i class="bx bx-list-check"></i> Quản lý chỉ mục',
