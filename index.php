@@ -19,24 +19,20 @@ $response9200 = curl_exec($curl9200);
 $status9200 = curl_getinfo($curl9200, CURLINFO_HTTP_CODE);
 curl_close($curl9200);
 
-// if ($status9200 == 200) {
-//     $hosts = [
-//         [
-//             'host' => 'localhost',
-//             'port' => 9200,
-//             'scheme' => 'http',
-//         ]
-//     ];
-// }
-// if ($status9200 != 200) {
-//     echo '<h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
-//     exit();
-// }
-$client = ClientBuilder::create()->setHosts(
-    [
-        'localhost:9200'
-    ]
-)->build();
+if ($status9200 == 200) {
+    $hosts = [
+        [
+            'host' => 'localhost',
+            'port' => 9200,
+            'scheme' => 'http',
+        ]
+    ];
+}
+if ($status9200 != 200) {
+    echo '<h3 style="background-color: #f8d7da; padding: 15px; border-radius: 8px; text-align: center; font-size: 15px; color: #975057;">Error: Server chưa được kích hoạt. Không thể kết nối đến Elasticsearch</h3>';
+    exit();
+}
+$client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
 
 ?>
