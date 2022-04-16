@@ -64,7 +64,7 @@ $client = ClientBuilder::create()->setHosts($hosts)->build();
 $result = $client->cat()->indices();
 
 if ($status9200 === 0) {
-    var_dump('client: ' . $client);
+    var_dump('client: ' . $result);
 }
 
 curl_close($curl9299);
